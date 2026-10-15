@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express Checkout | ATELIER LUXE</title>
+  <meta name="description" content="Secure encrypted checkout for your Atelier apparel order.">
+
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Bespoke Luxury CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-body">
+
+  <!-- Simplified Checkout Navigation Header -->
+  <header class="py-3 bg-white border-bottom">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        ATELIER <span>LUXE</span>
+      </a>
+      <div class="d-flex align-items-center gap-2 text-muted small">
+        <i class="bi bi-lock-fill text-dark"></i> 256-Bit SSL Encrypted
+      </div>
+    </div>
+  </header>
+
+  <!-- Checkout Main Container -->
+  <main class="py-5" id="checkoutContent">
+    <div class="container">
+      <div class="row g-5">
+        
+        <!-- Left Column: Checkout Input Form -->
+        <div class="col-lg-7">
+          <form id="checkoutForm">
+            
+            <!-- 1. Contact Information -->
+            <div class="bg-white p-4 border mb-4">
+              <h5 class="font-serif fs-5 mb-3">1. Contact Information</h5>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Email Address (for order tracking & receipt)</label>
+                <input type="email" class="form-control rounded-0" id="custEmail" placeholder="your.name@example.com" required value="chloe.vance@example.com">
+              </div>
+            </div>
+
+            <!-- 2. Shipping Destination -->
+            <div class="bg-white p-4 border mb-4">
+              <h5 class="font-serif fs-5 mb-3">2. Delivery Destination</h5>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label class="form-label small fw-semibold">First Name</label>
+                  <input type="text" class="form-control rounded-0" id="custFirstName" required value="Chloe">
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label small fw-semibold">Last Name</label>
+                  <input type="text" class="form-control rounded-0" id="custLastName" required value="Vance">
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-semibold">Street Address</label>
+                  <input type="text" class="form-control rounded-0" id="custAddress" placeholder="124 Fifth Avenue, Apt 4B" required value="742 Evergreen Terrace">
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label small fw-semibold">City</label>
+                  <input type="text" class="form-control rounded-0" id="custCity" required value="New York">
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label small fw-semibold">Postal / ZIP Code</label>
+                  <input type="text" class="form-control rounded-0" id="custPostal" required value="10001">
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Shipping Courier Method -->
+            <div class="bg-white p-4 border mb-4">
+              <h5 class="font-serif fs-5 mb-3">3. Delivery Courier Method</h5>
+              
+              <div class="form-check p-3 border mb-2 d-flex justify-content-between align-items-center">
+                <div>
+                  <input class="form-check-input ms-0 me-3" type="radio" name="shippingMethod" id="shipStandard" value="standard" checked>
+                  <label class="form-check-label fw-semibold" for="shipStandard">
+                    Standard Express (2-4 Business Days)
+                  </label>
+                  <div class="text-muted small ps-4">Signature rigid Atelier packaging included</div>
+                </div>
+                <span class="small fw-bold">FREE over $200 / $15</span>
+              </div>
+
+              <div class="form-check p-3 border d-flex justify-content-between align-items-center">
+                <div>
+                  <input class="form-check-input ms-0 me-3" type="radio" name="shippingMethod" id="shipPriority" value="priority">
+                  <label class="form-check-label fw-semibold" for="shipPriority">
+                    Priority Courier Overnight (Next Morning)
+                  </label>
+                  <div class="text-muted small ps-4">Priority tailoring inspection & morning dispatch</div>
+                </div>
+                <span class="small fw-bold">$35.00</span>
+              </div>
+            </div>
+
+            <!-- 4. Payment Simulation -->
+            <div class="bg-white p-4 border mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="font-serif fs-5 mb-0">4. Payment Information</h5>
+                <div class="text-muted small">
+                  <i class="bi bi-credit-card me-1"></i> Simulated Gateway
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="paymentMethod" id="payCard" value="Credit Card" checked>
+                  <label class="form-check-label small fw-semibold" for="payCard">Credit / Debit Card</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="paymentMethod" id="payCod" value="Cash On Delivery">
+                  <label class="form-check-label small fw-semibold" for="payCod">Cash on Delivery (COD)</label>
+                </div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label small fw-semibold">Card Number</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control rounded-0" id="cardNumber" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242" required>
+                    <span class="input-group-text bg-white border-start-0 rounded-0"><i class="bi bi-shield-check text-success"></i></span>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label small fw-semibold">Expires (MM/YY)</label>
+                  <input type="text" class="form-control rounded-0" id="cardExpiry" placeholder="12/28" value="12/28" required>
+                </div>
+                <div class="col-6">
+                  <label class="form-label small fw-semibold">CVC / CVV</label>
+                  <input type="password" class="form-control rounded-0" id="cardCvc" placeholder="•••" value="888" maxlength="4" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-atelier py-3 w-100 fs-6" id="submitOrderBtn">
+              Authorize Payment & Complete Order <i class="bi bi-lock-fill ms-2"></i>
+            </button>
+            <p class="text-muted text-center small mt-3">
+              By placing your order, you agree to Atelier Luxe's Terms of Luxury Concierge & Return Policy.
+            </p>
+          </form>
+        </div>
+
+        <!-- Right Column: Sticky Order Summary -->
+        <div class="col-lg-5">
+          <div class="bg-white p-4 border sticky-top" style="top: 20px;">
+            <h5 class="font-serif fs-5 mb-3 pb-2 border-bottom">Order Summary</h5>
+
+            <!-- Items List -->
+            <div id="checkoutItemsList" class="mb-4">
+              <!-- Rendered via checkout.js -->
+            </div>
+
+            <!-- Coupon Code Box -->
+            <div class="mb-4">
+              <label class="form-label small fw-semibold">Promotion / VIP Code</label>
+              <div class="input-group">
+                <input type="text" class="form-control rounded-0" id="couponCodeInput" placeholder="Try 'ATELIER10'">
+                <button class="btn btn-dark rounded-0 px-3" type="button" id="applyCouponBtn">Apply</button>
+              </div>
+              <div id="couponAlert" class="small mt-2" style="display: none;"></div>
+            </div>
+
+            <!-- Financial Breakdown -->
+            <div class="border-top pt-3 small">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Subtotal</span>
+                <span class="fw-semibold" id="summarySubtotal">$0.00</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2" id="summaryDiscountRow" style="display: none !important;">
+                <span class="text-success fw-semibold">VIP Promotion</span>
+                <span class="text-success fw-bold" id="summaryDiscount">-$0.00</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Shipping Courier</span>
+                <span class="fw-semibold" id="summaryShipping">FREE</span>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Estimated Sales Tax (8%)</span>
+                <span class="fw-semibold" id="summaryTax">$0.00</span>
+              </div>
+              <div class="d-flex justify-content-between border-top pt-3 fs-5 fw-bold text-dark">
+                <span>Total Due</span>
+                <span id="summaryTotal">$0.00</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-white border-top text-center text-muted small">
+    <div class="container">
+      &copy; 2026 Atelier Luxe Inc. Encrypted Checkout Simulation.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

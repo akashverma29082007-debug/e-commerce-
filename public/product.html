@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garment Details | ATELIER LUXE</title>
+  <meta name="description" content="Inspect fabric composition, sizing measurements, model fit, and customer reviews for this Atelier luxury garment.">
+
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Bespoke Luxury CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar text-center">
+    <span>COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $200 &bull; 30-DAY EFFORTLESS RETURNS</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-atelier sticky-top py-3">
+    <div class="container-fluid px-lg-5">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        ATELIER <span>LUXE</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#atelierNavbar">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="atelierNavbar">
+        <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-2">
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier active" href="shop.html">Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="shop.html?category=outerwear">Outerwear</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="shop.html?category=knitwear">Knitwear</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="admin.html">
+              <i class="bi bi-shield-lock me-1"></i> Admin Portal
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Action Icons -->
+      <div class="d-flex align-items-center gap-2">
+        <button class="nav-icon-btn" data-bs-toggle="modal" data-bs-target="#searchModal" title="Search Garments">
+          <i class="bi bi-search"></i>
+        </button>
+        <a href="shop.html" class="nav-icon-btn" title="Saved Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-counter wishlist-badge-count" style="display: none;">0</span>
+        </a>
+        <button class="nav-icon-btn open-cart-drawer" title="Shopping Bag">
+          <i class="bi bi-bag"></i>
+          <span class="badge-counter cart-badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumbs -->
+  <div class="py-3 bg-white border-bottom">
+    <div class="container-fluid px-lg-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small mb-0 text-muted">
+          <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
+          <li class="breadcrumb-item"><a href="shop.html" class="text-muted">Collection</a></li>
+          <li class="breadcrumb-item"><a href="#" id="pdpBreadcrumbCategory" class="text-muted">Category</a></li>
+          <li class="breadcrumb-item active text-dark" id="pdpBreadcrumbTitle" aria-current="page">Garment</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- PDP Main Container -->
+  <main class="py-5" id="pdpContent">
+    <div class="container-fluid px-lg-5">
+      <div class="row g-5">
+        
+        <!-- Left Column: Multi-Angle Interactive Gallery -->
+        <div class="col-lg-7">
+          <div class="row g-3">
+            <!-- Thumbnail Reel -->
+            <div class="col-md-2 order-2 order-md-1">
+              <div class="pdp-thumbnail-reel" id="pdpThumbnailReel">
+                <!-- Populated via product-detail.js -->
+              </div>
+            </div>
+            
+            <!-- Main Gallery View -->
+            <div class="col-md-10 order-1 order-md-2">
+              <div class="pdp-main-gallery shadow-sm">
+                <img src="" alt="" id="pdpMainImg">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Garment Specs & Multi-Variant Matrix -->
+        <div class="col-lg-5">
+          <div class="ps-lg-3">
+            
+            <!-- Category & Title -->
+            <div class="product-category-tag mb-2" id="pdpCategory">Category • Gender</div>
+            <h1 class="font-serif display-6 fw-bold mb-3" id="pdpTitle">Garment Title</h1>
+
+            <!-- Price & Rating Row -->
+            <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+              <div class="fs-4 fw-bold text-dark" id="pdpPrice">$0.00</div>
+              <div class="d-flex align-items-center gap-2">
+                <span class="text-warning"><i class="bi bi-star-fill"></i> <strong id="pdpRatingScore" class="text-dark">5.0</strong></span>
+                <a href="#reviewsSection" class="text-muted small text-decoration-underline" id="pdpReviewCount">(0 reviews)</a>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-muted leading-relaxed mb-4" id="pdpDescription">
+              Garment editorial description loading...
+            </p>
+
+            <!-- Color Swatches Matrix -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="small text-uppercase fw-semibold text-muted">
+                  Color: <strong class="text-dark" id="pdpColorLabel">Colorway</strong>
+                </span>
+              </div>
+              <div class="swatch-group gap-2" id="pdpColorSwatches">
+                <!-- Color swatches dynamically injected -->
+              </div>
+            </div>
+
+            <!-- Size Selector & Interactive Size Guide Link -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="small text-uppercase fw-semibold text-muted">Select Size</span>
+                <button type="button" class="btn btn-link text-dark p-0 small text-decoration-underline" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">
+                  <i class="bi bi-rulers me-1"></i> Size & Fit Guide
+                </button>
+              </div>
+              <div class="d-flex flex-wrap gap-2" id="pdpSizeChips">
+                <!-- Size chips dynamically injected -->
+              </div>
+              <div id="pdpStockAlert" class="stock-scarcity-alert mt-2" style="display: none;"></div>
+            </div>
+
+            <!-- Purchase Actions -->
+            <div class="d-flex flex-column gap-3 mb-4 pt-2">
+              <button class="btn btn-atelier py-3 w-100" id="pdpAddToBagBtn">
+                <i class="bi bi-bag-plus me-2"></i> Add To Shopping Bag
+              </button>
+              <button class="btn btn-atelier-outline py-3 w-100" id="pdpWishlistBtn">
+                <i class="bi bi-heart me-2"></i> Save to Wishlist
+              </button>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="bg-light p-3 border mb-4">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <i class="bi bi-truck fs-5 text-dark"></i>
+                <div class="small"><strong>Complimentary Express Delivery</strong> on orders over $200.</div>
+              </div>
+              <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-arrow-counterclockwise fs-5 text-dark"></i>
+                <div class="small"><strong>30-Day Effortless Fitting:</strong> Return or exchange hassle-free.</div>
+              </div>
+            </div>
+
+            <!-- Accordion Details (Fabric, Fit, Care, Shipping) -->
+            <div class="accordion accordion-flush border-top" id="pdpAccordions">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed px-0 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#accFabric">
+                    Fabric Composition & Sourcing
+                  </button>
+                </h2>
+                <div id="accFabric" class="accordion-collapse collapse" data-bs-parent="#pdpAccordions">
+                  <div class="accordion-body px-0 text-muted small" id="pdpFabricDetails">
+                    Fabric details...
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed px-0 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#accCare">
+                    Garment Care & Preservation
+                  </button>
+                </h2>
+                <div id="accCare" class="accordion-collapse collapse" data-bs-parent="#pdpAccordions">
+                  <div class="accordion-body px-0 text-muted small" id="pdpCareInstructions">
+                    Care instructions...
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed px-0 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#accShipping">
+                    Courier Delivery & Complimentary Returns
+                  </button>
+                </h2>
+                <div id="accShipping" class="accordion-collapse collapse" data-bs-parent="#pdpAccordions">
+                  <div class="accordion-body px-0 text-muted small">
+                    All garments are dispatched in signature rigid Atelier garment boxes with protective acid-free tissue paper. Standard shipping takes 2-4 business days. Pre-printed prepaid DHL courier return labels are included in every delivery.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Customer Reviews & Sizing Fit Meter -->
+      <section class="mt-5 pt-5 border-top" id="reviewsSection">
+        <div class="row g-5">
+          
+          <div class="col-lg-4">
+            <h3 class="font-serif fs-4 mb-3">Fit & Sizing Confidence</h3>
+            <p class="text-muted small mb-3">Based on verified customer feedback across standard body types.</p>
+            
+            <div class="bg-white p-4 border">
+              <div class="d-flex justify-content-between small fw-semibold">
+                <span>Runs Small</span>
+                <span class="text-dark">True to Size</span>
+                <span>Runs Large</span>
+              </div>
+              <div class="fit-meter-track">
+                <div class="fit-meter-marker" id="pdpFitMarker" style="left: 50%;"></div>
+              </div>
+              <div class="text-center mt-3 small text-muted">
+                <strong class="text-dark" id="pdpFitSummary">True to size</strong>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button class="btn btn-atelier-outline w-100" data-bs-toggle="modal" data-bs-target="#writeReviewModal">
+                <i class="bi bi-pencil-square me-2"></i> Write a Verified Review
+              </button>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="font-serif fs-4 mb-0">Customer Testimonials</h3>
+            </div>
+            
+            <div id="pdpReviewsList">
+              <!-- Reviews dynamically loaded -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Complete The Look / Related Garments -->
+      <section class="mt-5 pt-5 border-top">
+        <div class="text-center mb-5">
+          <span class="text-uppercase small text-muted fw-bold">Curated Pairings</span>
+          <h2 class="font-serif display-6">Complete The Silhouette</h2>
+        </div>
+        <div class="row g-4" id="pdpRelatedProducts">
+          <!-- Populated via product-detail.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Interactive Size Guide Modal -->
+  <div class="modal fade" id="sizeGuideModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow-lg">
+        <div class="modal-header border-bottom">
+          <h5 class="modal-title font-serif">Atelier Sizing & Dimensions Guide</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="text-muted small mb-4">
+            Our garments follow European sartorial tailoring standards. For an oversized drape, we advise taking your standard size. For slim tailoring, take one size down.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table table-bordered text-center small align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Size</th>
+                  <th>EU / IT</th>
+                  <th>US / UK</th>
+                  <th>Chest (in / cm)</th>
+                  <th>Waist (in / cm)</th>
+                  <th>Hips (in / cm)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-bold">XS</td>
+                  <td>44</td>
+                  <td>34</td>
+                  <td>35" / 89 cm</td>
+                  <td>29" / 74 cm</td>
+                  <td>36" / 91 cm</td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">S</td>
+                  <td>46</td>
+                  <td>36</td>
+                  <td>37" / 94 cm</td>
+                  <td>31" / 79 cm</td>
+                  <td>38" / 96 cm</td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">M</td>
+                  <td>48</td>
+                  <td>38</td>
+                  <td>40" / 102 cm</td>
+                  <td>33" / 84 cm</td>
+                  <td>40" / 102 cm</td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">L</td>
+                  <td>50</td>
+                  <td>40</td>
+                  <td>43" / 109 cm</td>
+                  <td>36" / 91 cm</td>
+                  <td>43" / 109 cm</td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">XL</td>
+                  <td>52</td>
+                  <td>42</td>
+                  <td>46" / 117 cm</td>
+                  <td>39" / 99 cm</td>
+                  <td>46" / 117 cm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Write a Review Modal -->
+  <div class="modal fade" id="writeReviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow-lg">
+        <div class="modal-header border-bottom">
+          <h5 class="modal-title font-serif">Submit Garment Feedback</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="writeReviewForm">
+          <div class="modal-body p-4">
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Your Name</label>
+              <input type="text" class="form-control rounded-0" id="reviewAuthor" placeholder="e.g., Alexandra R." required>
+            </div>
+            <div class="row g-3 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Overall Rating</label>
+                <select class="form-select rounded-0" id="reviewRating">
+                  <option value="5" selected>★★★★★ (5/5)</option>
+                  <option value="4">★★★★☆ (4/5)</option>
+                  <option value="3">★★★☆☆ (3/5)</option>
+                  <option value="2">★★☆☆☆ (2/5)</option>
+                  <option value="1">★☆☆☆☆ (1/5)</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Garment Fit</label>
+                <select class="form-select rounded-0" id="reviewFit">
+                  <option value="Runs Small">Runs Small</option>
+                  <option value="True to Size" selected>True to Size</option>
+                  <option value="Runs Large">Runs Large</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Review Headline</label>
+              <input type="text" class="form-control rounded-0" id="reviewTitle" placeholder="e.g., Exceptional cashmere density" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Detailed Feedback</label>
+              <textarea class="form-control rounded-0" id="reviewComment" rows="4" placeholder="Share your thoughts on the drape, fabric feel, and sizing..." required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer border-top">
+            <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-atelier">Post Review</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-atelier">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="footer-brand">ATELIER LUXE</div>
+          <p class="text-muted small pe-lg-4">
+            Bespoke modern apparel platform featuring high-density fabrics, architectural tailoring, and sustainable luxury garments.
+          </p>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="footer-heading">Collections</div>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=outerwear">Outerwear & Coats</a></li>
+            <li><a href="shop.html?category=knitwear">Knitwear & Sweaters</a></li>
+            <li><a href="shop.html?category=trousers">Tailored Trousers</a></li>
+            <li><a href="shop.html?category=shirts">Luxury Shirts</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="footer-heading">Concierge</div>
+          <ul class="footer-links">
+            <li><a href="#">Size & Fit Guide</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-heading">The Atelier Newsletter</div>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control rounded-0 bg-transparent text-light border-secondary" placeholder="Enter your email">
+            <button class="btn btn-atelier-gold" type="button">Join</button>
+          </div>
+        </div>
+      </div>
+      <div class="border-top border-secondary mt-5 pt-4 text-center text-muted small">
+        <p class="mb-0">&copy; 2026 Atelier Luxe Inc. Decoupled Architecture Demo.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Out Shopping Bag Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h5 class="font-serif mb-0 fs-5">Shopping Bag (<span class="cart-badge-count">0</span>)</h5>
+      <button class="btn-close" id="closeCartDrawer" aria-label="Close"></button>
+    </div>
+    <div class="free-shipping-bar">
+      <div id="freeShippingText">Add <strong>$200.00</strong> for complimentary express shipping.</div>
+      <div class="free-shipping-progress">
+        <div class="free-shipping-progress-fill" id="freeShippingProgress" style="width: 0%;"></div>
+      </div>
+    </div>
+    <div class="cart-items-list" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted small text-uppercase fw-semibold">Estimated Subtotal</span>
+        <span class="fs-5 fw-bold" id="cartDrawerSubtotal">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn btn-atelier w-100 py-3 mb-2">Proceed to Checkout</a>
+      <button class="btn btn-link text-center w-100 text-dark small text-decoration-none" onclick="AtelierCart.closeDrawer()">Continue Shopping</button>
+    </div>
+  </aside>
+
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title font-serif">Search Atelier Collection</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="input-group input-group-lg border-bottom pb-2">
+            <span class="input-group-text bg-transparent border-0 ps-0"><i class="bi bi-search fs-4"></i></span>
+            <input type="text" id="globalSearchInput" class="form-control border-0 bg-transparent fs-5" placeholder="Search by garment, fabric, coat, sweater...">
+          </div>
+          <div class="mt-4" id="globalSearchResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/product-detail.js"></script>
+</body>
+</html>

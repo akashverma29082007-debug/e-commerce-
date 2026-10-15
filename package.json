@@ -1,0 +1,17 @@
+{
+  "name": "e-commerce-website",
+  "version": "1.0.0",
+  "description": "**Role:** Lead Software Architect   **Architecture:** Decoupled Architecture (Vanilla HTML5 / CSS3 / ES6+ JavaScript + Bootstrap 5 + Express REST API)   **Current Phase:** Phase 1 — Frontend Implementation & User Review",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

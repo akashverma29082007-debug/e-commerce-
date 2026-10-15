@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Operations Portal | ATELIER LUXE</title>
+
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Bespoke Luxury CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-body">
+
+  <!-- Admin Navbar -->
+  <nav class="navbar navbar-dark bg-dark py-3">
+    <div class="container-fluid px-lg-5">
+      <a class="navbar-brand font-display letter-spacing-1 d-flex align-items-center gap-2" href="admin.html">
+        <i class="bi bi-shield-lock-fill text-warning"></i> ATELIER <span class="badge bg-secondary">ADMIN</span>
+      </a>
+      <div class="d-flex align-items-center gap-3">
+        <span class="text-white-50 small d-none d-md-inline">Logged in as: <strong>Elena (Store Ops)</strong></span>
+        <a href="index.html" class="btn btn-outline-light btn-sm rounded-0">
+          <i class="bi bi-shop me-1"></i> Public Storefront
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="py-5">
+    <div class="container-fluid px-lg-5">
+      
+      <!-- KPI Metric Summary Cards -->
+      <div class="row g-4 mb-5">
+        <div class="col-sm-6 col-xl-3">
+          <div class="bg-white p-4 border shadow-sm">
+            <span class="text-uppercase small text-muted fw-bold">Gross Volume Settled</span>
+            <div class="display-6 font-serif fw-bold text-dark mt-2 mb-0" id="kpiRevenue">$0.00</div>
+            <div class="small text-success mt-2"><i class="bi bi-graph-up-arrow me-1"></i> Verified transactions</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+          <div class="bg-white p-4 border shadow-sm">
+            <span class="text-uppercase small text-muted fw-bold">Active Customer Orders</span>
+            <div class="display-6 font-serif fw-bold text-dark mt-2 mb-0" id="kpiActiveOrders">0</div>
+            <div class="small text-muted mt-2"><i class="bi bi-clock-history me-1"></i> Awaiting dispatch</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+          <div class="bg-white p-4 border shadow-sm">
+            <span class="text-uppercase small text-muted fw-bold">Low Stock Scarcity Alerts</span>
+            <div class="display-6 font-serif fw-bold text-danger mt-2 mb-0" id="kpiLowStock">0</div>
+            <div class="small text-danger mt-2"><i class="bi bi-exclamation-triangle me-1"></i> SKUs &le; 3 units left</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-xl-3">
+          <div class="bg-white p-4 border shadow-sm">
+            <span class="text-uppercase small text-muted fw-bold">Active Apparel Styles</span>
+            <div class="display-6 font-serif fw-bold text-dark mt-2 mb-0" id="kpiTotalStyles">0</div>
+            <div class="small text-muted mt-2"><i class="bi bi-tag me-1"></i> Multi-variant catalog</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabbed Operations Workspace -->
+      <div class="bg-white border p-4 shadow-sm">
+        <ul class="nav nav-pills mb-4 pb-3 border-bottom gap-2" id="adminTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active rounded-0 fw-semibold text-uppercase small" id="pills-inventory-tab" data-bs-toggle="pill" data-bs-target="#pills-inventory" type="button" role="tab">
+              <i class="bi bi-boxes me-2"></i> Inventory & SKU Stocks
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-0 fw-semibold text-uppercase small" id="pills-orders-tab" data-bs-toggle="pill" data-bs-target="#pills-orders" type="button" role="tab">
+              <i class="bi bi-truck me-2"></i> Orders Fulfillment
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link rounded-0 fw-semibold text-uppercase small" id="pills-new-prod-tab" data-bs-toggle="pill" data-bs-target="#pills-new-prod" type="button" role="tab">
+              <i class="bi bi-plus-circle me-2"></i> Add New Garment Style
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="adminTabsContent">
+          
+          <!-- TAB 1: Inventory Table -->
+          <div class="tab-pane fade show active" id="pills-inventory" role="tabpanel">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="font-serif mb-0">Garment SKU Matrix & Real-Time Stock Controls</h5>
+              <span class="small text-muted">Stock values auto-save upon input change.</span>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle border">
+                <thead class="table-light small text-uppercase">
+                  <tr>
+                    <th>Photo</th>
+                    <th>Garment Title & Department</th>
+                    <th>Base Price</th>
+                    <th>Variant Stock by Size (Edit In-line)</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminInventoryTbody" class="small">
+                  <!-- Injected via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 2: Orders Queue -->
+          <div class="tab-pane fade" id="pills-orders" role="tabpanel">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="font-serif mb-0">Customer Inbound Orders</h5>
+              <span class="small text-muted">Update fulfillment status to trigger customer stepper tracking.</span>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle border">
+                <thead class="table-light small text-uppercase">
+                  <tr>
+                    <th>Order # & Date</th>
+                    <th>Customer Details</th>
+                    <th>Garments & Variants</th>
+                    <th>Settled Total</th>
+                    <th>Fulfillment Status</th>
+                  </tr>
+                </thead>
+                <tbody id="adminOrdersTbody" class="small">
+                  <!-- Injected via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 3: Add New Garment Form -->
+          <div class="tab-pane fade" id="pills-new-prod" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-8">
+                <h5 class="font-serif mb-4">Publish New Sartorial Garment</h5>
+                
+                <form id="adminNewProductForm">
+                  <div class="mb-3">
+                    <label class="form-label small fw-semibold">Garment Title</label>
+                    <input type="text" class="form-control rounded-0" id="newProdTitle" placeholder="e.g., Unstructured Merino Wool Blazer" required>
+                  </div>
+
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                      <label class="form-label small fw-semibold">Department Category</label>
+                      <select class="form-select rounded-0" id="newProdCategory">
+                        <option value="1">Outerwear & Coats</option>
+                        <option value="2">Knitwear & Sweaters</option>
+                        <option value="3">Tailored Trousers</option>
+                        <option value="4">Luxury Shirts & Tops</option>
+                        <option value="5">Dresses & Silk</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label small fw-semibold">Retail Price ($ USD)</label>
+                      <input type="number" step="0.01" class="form-control rounded-0" id="newProdPrice" placeholder="245.00" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label small fw-semibold">Target Gender</label>
+                      <select class="form-select rounded-0" id="newProdGender">
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Unisex" selected>Unisex</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Upload Folder Demonstration -->
+                  <div class="mb-3 p-3 bg-light border">
+                    <label class="form-label small fw-semibold d-block">
+                      <i class="bi bi-folder-symlink me-1"></i> Garment Photography (Local Uploads Folder)
+                    </label>
+                    <input type="file" class="form-control rounded-0 mb-2" id="newProdImage" accept="image/*">
+                    <div class="small text-muted mb-2">Or enter direct high-res image URL:</div>
+                    <input type="url" class="form-control rounded-0" id="newProdImageUrl" placeholder="https://images.unsplash.com/photo-...">
+                    <div class="mt-2">
+                      <img src="" id="imageUploadPreview" alt="Upload preview" style="max-height: 120px; display: none; object-fit: cover;" class="border">
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label small fw-semibold">Fabric Composition & GSM</label>
+                    <input type="text" class="form-control rounded-0" id="newProdFabric" placeholder="e.g., 100% Extrafine Australian Merino Wool (7-gauge)">
+                  </div>
+
+                  <div class="mb-4">
+                    <label class="form-label small fw-semibold">Editorial Product Description</label>
+                    <textarea class="form-control rounded-0" id="newProdDescription" rows="4" placeholder="Detail the cut, drape, lapel specifications, and styling recommendations..."></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-atelier px-5 py-3">
+                    <i class="bi bi-cloud-arrow-up me-2"></i> Publish Style to Atelier Catalog
+                  </button>
+                </form>
+              </div>
+
+              <div class="col-lg-4 d-none d-lg-block border-start ps-4">
+                <h6 class="font-sans fw-bold text-uppercase small text-muted mb-3">Architectural Note</h6>
+                <div class="p-3 bg-light border small text-muted mb-4">
+                  <strong>Decoupled Architecture:</strong>
+                  In this current review phase, this form connects to the local dataset cache and simulates the local upload folder. In the upcoming backend phase, this posts directly to <code>/api/v1/upload</code> with <code>multer</code> storage and updates SQLite3.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="py-4 bg-white border-top text-center text-muted small mt-5">
+    &copy; 2026 Atelier Luxe Inc. Operations Dashboard.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

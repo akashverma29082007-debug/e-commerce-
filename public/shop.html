@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Collection | ATELIER LUXE Apparel</title>
+  <meta name="description" content="Explore our seasonal collection of luxury outerwear, tailored trousers, extrafine merino knitwear, and silk dresses.">
+
+  <!-- Bootstrap 5 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Bespoke Luxury CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar text-center">
+    <span>COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $200 &bull; 30-DAY EFFORTLESS RETURNS</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-atelier sticky-top py-3">
+    <div class="container-fluid px-lg-5">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        ATELIER <span>LUXE</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#atelierNavbar">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="atelierNavbar">
+        <ul class="navbar-nav mb-2 mb-lg-0 gap-lg-2">
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier active" href="shop.html">Collection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="shop.html?category=outerwear">Outerwear</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="shop.html?category=knitwear">Knitwear</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-atelier" href="admin.html">
+              <i class="bi bi-shield-lock me-1"></i> Admin Portal
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Action Icons -->
+      <div class="d-flex align-items-center gap-2">
+        <button class="nav-icon-btn" data-bs-toggle="modal" data-bs-target="#searchModal" title="Search Garments">
+          <i class="bi bi-search"></i>
+        </button>
+        <a href="shop.html" class="nav-icon-btn" title="Saved Wishlist">
+          <i class="bi bi-heart"></i>
+          <span class="badge-counter wishlist-badge-count" style="display: none;">0</span>
+        </a>
+        <button class="nav-icon-btn open-cart-drawer" title="Shopping Bag">
+          <i class="bi bi-bag"></i>
+          <span class="badge-counter cart-badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header & Breadcrumbs -->
+  <header class="py-4 bg-white border-bottom">
+    <div class="container-fluid px-lg-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small mb-2 text-muted">
+          <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
+          <li class="breadcrumb-item active text-dark" aria-current="page">Collection</li>
+        </ol>
+      </nav>
+      <div class="d-flex justify-content-between align-items-end flex-wrap gap-3">
+        <div>
+          <h1 class="font-serif display-6 mb-1">The Atelier Collection</h1>
+          <p class="text-muted small mb-0">Master-crafted garments with uncompromising material density and silhouette.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Shop Layout -->
+  <main class="py-5">
+    <div class="container-fluid px-lg-5">
+      <div class="row g-4">
+        
+        <!-- Filter Sidebar -->
+        <aside class="col-lg-3 col-xl-2">
+          <div class="p-4 bg-white border sticky-top" style="top: 100px; z-index: 10;">
+            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+              <h5 class="font-sans fw-bold fs-6 mb-0 text-uppercase letter-spacing-1">Filters</h5>
+              <button class="btn btn-link text-muted p-0 small text-decoration-none" onclick="resetAllFilters()">Reset</button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="mb-4">
+              <label class="fw-semibold small text-uppercase text-muted mb-2 d-block">Department</label>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterCategory" id="catAll" value="all" checked>
+                <label class="form-check-label small" for="catAll">All Departments</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterCategory" id="catOuterwear" value="outerwear">
+                <label class="form-check-label small" for="catOuterwear">Outerwear & Coats</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterCategory" id="catKnitwear" value="knitwear">
+                <label class="form-check-label small" for="catKnitwear">Knitwear & Sweaters</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterCategory" id="catTrousers" value="trousers">
+                <label class="form-check-label small" for="catTrousers">Tailored Trousers</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterCategory" id="catShirts" value="shirts">
+                <label class="form-check-label small" for="catShirts">Shirts & Tops</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterCategory" id="catDresses" value="dresses">
+                <label class="form-check-label small" for="catDresses">Dresses & Silk</label>
+              </div>
+            </div>
+
+            <!-- Gender Filter -->
+            <div class="mb-4">
+              <label class="fw-semibold small text-uppercase text-muted mb-2 d-block">Gender</label>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterGender" id="genderAll" value="all" checked>
+                <label class="form-check-label small" for="genderAll">All</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterGender" id="genderMen" value="Men">
+                <label class="form-check-label small" for="genderMen">Men</label>
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="filterGender" id="genderWomen" value="Women">
+                <label class="form-check-label small" for="genderWomen">Women</label>
+              </div>
+            </div>
+
+            <!-- Size Filter -->
+            <div class="mb-4">
+              <label class="fw-semibold small text-uppercase text-muted mb-2 d-block">Size</label>
+              <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-sm btn-outline-dark size-filter-btn rounded-0" data-size="XS">XS</button>
+                <button type="button" class="btn btn-sm btn-outline-dark size-filter-btn rounded-0" data-size="S">S</button>
+                <button type="button" class="btn btn-sm btn-outline-dark size-filter-btn rounded-0" data-size="M">M</button>
+                <button type="button" class="btn btn-sm btn-outline-dark size-filter-btn rounded-0" data-size="L">L</button>
+                <button type="button" class="btn btn-sm btn-outline-dark size-filter-btn rounded-0" data-size="XL">XL</button>
+              </div>
+            </div>
+
+            <!-- Color Palette Filter -->
+            <div class="mb-4">
+              <label class="fw-semibold small text-uppercase text-muted mb-2 d-block">Color Palette</label>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #C19A6B; width: 20px; height: 20px;" data-color="camel" title="Camel"></span>
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #111111; width: 20px; height: 20px;" data-color="black" title="Black"></span>
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #3A3D40; width: 20px; height: 20px;" data-color="charcoal" title="Charcoal"></span>
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #E3DAC9; width: 20px; height: 20px;" data-color="cream" title="Cream"></span>
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #3B4D3C; width: 20px; height: 20px;" data-color="olive" title="Olive"></span>
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #1B263B; width: 20px; height: 20px;" data-color="navy" title="Navy"></span>
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #E6D5B8; width: 20px; height: 20px;" data-color="champagne" title="Champagne"></span>
+                <span class="color-swatch-circle color-filter-swatch" style="background-color: #6E1B24; width: 20px; height: 20px;" data-color="burgundy" title="Burgundy"></span>
+              </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div>
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <label class="fw-semibold small text-uppercase text-muted mb-0">Max Price</label>
+                <span class="small fw-bold" id="priceRangeLabel">$500</span>
+              </div>
+              <input type="range" class="form-range" id="priceRangeSlider" min="50" max="500" step="10" value="500">
+              <div class="d-flex justify-content-between small text-muted">
+                <span>$50</span>
+                <span>$500</span>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- Product Grid & Results Area -->
+        <section class="col-lg-9 col-xl-10">
+          
+          <!-- Top Controls Bar -->
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 pb-3 mb-4 border-bottom">
+            <div id="productResultsCount" class="text-muted small fw-semibold">
+              Showing 6 styles
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <label for="sortSelect" class="small text-muted text-nowrap mb-0">Sort By:</label>
+              <select class="form-select form-select-sm rounded-0 border-secondary" id="sortSelect" style="width: 190px;">
+                <option value="newest" selected>New Drops First</option>
+                <option value="price_asc">Price: Low to High</option>
+                <option value="price_desc">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Active Filter Tags Container -->
+          <div id="activeFilterTags"></div>
+
+          <!-- The Dynamic Products Grid -->
+          <div class="row g-4" id="shopProductsGrid">
+            <!-- Populated via public/js/shop.js -->
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-atelier">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="footer-brand">ATELIER LUXE</div>
+          <p class="text-muted small pe-lg-4">
+            Bespoke modern apparel platform featuring high-density fabrics, architectural tailoring, and sustainable luxury garments.
+          </p>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="footer-heading">Collections</div>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=outerwear">Outerwear & Coats</a></li>
+            <li><a href="shop.html?category=knitwear">Knitwear & Sweaters</a></li>
+            <li><a href="shop.html?category=trousers">Tailored Trousers</a></li>
+            <li><a href="shop.html?category=shirts">Luxury Shirts</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="footer-heading">Concierge</div>
+          <ul class="footer-links">
+            <li><a href="#">Size & Fit Guide</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-heading">The Atelier Newsletter</div>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control rounded-0 bg-transparent text-light border-secondary" placeholder="Enter your email">
+            <button class="btn btn-atelier-gold" type="button">Join</button>
+          </div>
+        </div>
+      </div>
+      <div class="border-top border-secondary mt-5 pt-4 text-center text-muted small">
+        <p class="mb-0">&copy; 2026 Atelier Luxe Inc. Decoupled Architecture Demo.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Out Shopping Bag Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h5 class="font-serif mb-0 fs-5">Shopping Bag (<span class="cart-badge-count">0</span>)</h5>
+      <button class="btn-close" id="closeCartDrawer" aria-label="Close"></button>
+    </div>
+    <div class="free-shipping-bar">
+      <div id="freeShippingText">Add <strong>$200.00</strong> for complimentary express shipping.</div>
+      <div class="free-shipping-progress">
+        <div class="free-shipping-progress-fill" id="freeShippingProgress" style="width: 0%;"></div>
+      </div>
+    </div>
+    <div class="cart-items-list" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted small text-uppercase fw-semibold">Estimated Subtotal</span>
+        <span class="fs-5 fw-bold" id="cartDrawerSubtotal">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn btn-atelier w-100 py-3 mb-2">Proceed to Checkout</a>
+      <button class="btn btn-link text-center w-100 text-dark small text-decoration-none" onclick="AtelierCart.closeDrawer()">Continue Shopping</button>
+    </div>
+  </aside>
+
+  <!-- Search Modal -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-0 border-0 shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title font-serif">Search Atelier Collection</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="input-group input-group-lg border-bottom pb-2">
+            <span class="input-group-text bg-transparent border-0 ps-0"><i class="bi bi-search fs-4"></i></span>
+            <input type="text" id="globalSearchInput" class="form-control border-0 bg-transparent fs-5" placeholder="Search by garment, fabric, coat, sweater...">
+          </div>
+          <div class="mt-4" id="globalSearchResults"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>
